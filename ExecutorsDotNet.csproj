@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EB9FBE41-6C6D-422A-A605-AC2AF0BFA5AE}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ExecutorsDotNet</RootNamespace>
+    <RootNamespace>Executors</RootNamespace>
     <AssemblyName>ExecutorsDotNet</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>

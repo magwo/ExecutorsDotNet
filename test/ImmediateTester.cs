@@ -7,7 +7,7 @@ namespace Executors.Test
 	public class ImmediateTester : CommonTester
 	{
 		
-		public override IExecutor CreateDefaultExecutor() {
+		public override IExecutor CreateDefaultExecutor(ShutdownMode shutdownMode) {
 			return new ImmediateExecutor();
 		}
 	}
