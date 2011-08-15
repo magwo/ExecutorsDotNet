@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+//using UnityEngine;
 using System.Threading;
 
 namespace Executors {
@@ -45,7 +45,7 @@ namespace Executors {
         {
             if (doLogging)
             {
-                Debug.Log("ExecutorTester: " + msg);
+                //Debug.Log("ExecutorTester: " + msg);
             }
         }
 
