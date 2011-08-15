@@ -1,1 +1,9 @@
-Asd
+This is a small framework designed to assist in the usage (or not) of multiple threads in a C#/.Net program.
+
+By having a distinctly object-oriented approach to threading and task processing, the style of task 
+execution can be dynamic and flexible even in run-time.
+
+I don't suppose this framework is immensely useful, I guess because of its small scope, 
+but I enjoy making and improving it.
+
+/Magnus
