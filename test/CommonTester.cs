@@ -14,10 +14,10 @@ namespace Executors.Test
 		}
 		public abstract IExecutor CreateDefaultExecutor(ShutdownMode shutdownMode);
 
-		class AddTask : ICallable<int>
+		class SummationTask : ICallable<int>
 		{
 			int a, b;
-			public AddTask(int a, int b)
+			public SummationTask(int a, int b)
 			{
 				this.a = a;
 				this.b = b;
@@ -60,7 +60,7 @@ namespace Executors.Test
 		public void ShouldCompleteTask()
 		{
 			var executor = CreateDefaultExecutor();
-			var future = executor.Submit<int>(new AddTask(5, 6));
+			var future = executor.Submit<int>(new SummationTask(5, 6));
 			Assert.AreEqual(11, future.GetResult());
 		}
 
@@ -68,11 +68,11 @@ namespace Executors.Test
 		public void ShouldCompleteAllTasks()
 		{
 			var executor = CreateDefaultExecutor();
-			var tasks = new List<AddTask>();
+			var tasks = new List<ICallable<int>>();
 			var futures = new List<Future<int>>();
 			
 			for(int i = 0; i < 10; i++) {
-				var task = new AddTask(i, i + 1);
+				var task = new SummationTask(i, i + 1);
 				tasks.Add(task);
 				futures.Add(executor.Submit<int>(task));
 			}
@@ -89,6 +89,18 @@ namespace Executors.Test
 		{
 			var executor = CreateDefaultExecutor();
 			executor.Submit<int>(new ExceptionThrowingTask()).GetResult();
+		}
+		
+		[Test]
+		public void ShouldRethrowWithCorrectInnerException()
+		{
+			var executor = CreateDefaultExecutor();
+			try {
+				executor.Submit<int>(new ExceptionThrowingTask()).GetResult();
+				Assert.Fail();
+			} catch(ExecutionException e) {
+				Assert.IsInstanceOfType(typeof(DummyException), e.delayedException);
+			}
 		}
 		
 		[Test]

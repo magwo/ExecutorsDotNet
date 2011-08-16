@@ -43,7 +43,6 @@
     <Compile Include="src\ImmediateExecutor.cs" />
     <Compile Include="src\SingleThreadExecutor.cs" />
     <Compile Include="src\WorkItem.cs" />
-    <Compile Include="test\ExecutorTester.cs" />
     <Compile Include="test\CommonTester.cs" />
     <Compile Include="test\ImmediateTester.cs" />
     <Compile Include="test\SingleThreadTester.cs" />
