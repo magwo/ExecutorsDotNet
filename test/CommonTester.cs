@@ -14,46 +14,7 @@ namespace Executors.Test
 		}
 		public abstract IExecutor CreateDefaultExecutor(ShutdownMode shutdownMode);
 
-		class SummationTask : ICallable<int>
-		{
-			int a, b;
-			public SummationTask(int a, int b)
-			{
-				this.a = a;
-				this.b = b;
-			}
-			public int Call()
-			{
-				return a + b;
-			}
-		}
-
-		class DummyException : Exception
-		{
-		}
-		class ExceptionThrowingTask : ICallable<int>
-		{
-			public int Call()
-			{
-				throw new DummyException();
-			}
-		}
-
-		class SleepingTask : ICallable<int>
-		{
-			int sleepDuration;
-
-			public SleepingTask(int sleepDuration)
-			{
-				this.sleepDuration = sleepDuration;
-			}
-
-			public int Call()
-			{
-				Thread.Sleep(sleepDuration);
-				return 0;
-			}
-		}
+		
 
 
 		[Test]

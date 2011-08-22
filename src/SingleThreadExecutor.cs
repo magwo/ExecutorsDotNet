@@ -81,7 +81,7 @@ namespace Executors
 		{
 			lock(locker) {
 				if(shutdown) {
-					throw new InvalidOperationException("May not submit tasks after shutting down executor.");
+					throw new InvalidOperationException("May not submit tasks after shutting down executor. Create a new executor.");
 				}
 				Future<T> future = new Future<T>();
 				WorkItem<T> task = new WorkItem<T>(callable, future);

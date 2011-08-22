@@ -44,7 +44,7 @@ namespace Executors
 			if(future.IsDone) {
 				throw new InvalidOperationException("Can not cancel a future that is done.");
 			}
-			future.SetException(new ExecutionException(new Exception("Task was cancelled due to: " + reason)));
+			future.SetException(new ExecutionException(new TaskCancelledException("Task was cancelled due to: " + reason)));
 			future.SetDone();
 		}
 	}
