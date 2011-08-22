@@ -22,15 +22,20 @@ namespace Executors
 		volatile bool shutdownCompleted = false;
 
 
-		public SingleThreadExecutor() : this(ShutdownMode.FinishAll)
+		public SingleThreadExecutor() : this(ShutdownMode.FinishAll, new SimpleThreadFactory())
 		{
 		}
-
-		public SingleThreadExecutor(ShutdownMode shutdownMode)
+		
+		public SingleThreadExecutor(ShutdownMode shutdownMode) : this(shutdownMode, new SimpleThreadFactory())
+		{
+		}
+		
+		
+		public SingleThreadExecutor(ShutdownMode shutdownMode, IThreadFactory threadFactory)
 		{
 			this.shutdownMode = shutdownMode;
 			ThreadStart start = new ThreadStart(RunWorker);
-			workerThread = new Thread(start);
+			workerThread = threadFactory.CreateOrGetThread(start);
 			workerThread.Start();
 		}
 

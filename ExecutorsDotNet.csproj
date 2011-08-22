@@ -46,6 +46,7 @@
     <Compile Include="test\CommonTester.cs" />
     <Compile Include="test\ImmediateTester.cs" />
     <Compile Include="test\SingleThreadTester.cs" />
+    <Compile Include="src\IThreadFactory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
